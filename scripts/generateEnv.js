@@ -1,0 +1,16 @@
+const fs = require("fs");
+const path = require("path");
+require("dotenv").config({ path: path.resolve(__dirname, "../api/.env") });
+
+const config = {
+  API_BASE: `${process.env.BASE_URL}${process.env.PORT}${process.env.API_PREFIX}/tasks`,
+};
+
+const target = path.resolve(__dirname, "../public/scripts/env.js");
+fs.writeFileSync(
+  target,
+  `// ⚙️ generado automáticamente\n` +
+    `window._env_ = ${JSON.stringify(config, null, 2)};\n`
+);
+
+console.log("✅ env.js generado en public/scripts/env.js");
