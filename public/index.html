@@ -8,37 +8,41 @@
         <link rel="stylesheet" href="styles/main.css">
     </head>
     <body>
-        <header>
+        <header role="banner">
             <h1>Kanban Vanilla JS</h1>
         </header>
-        <main>
-            <section class="board">
+        <main role="main">
+            <section class="board" aria-label="Tablero Kanban">
                 <div class="colum" data-status="todo">
-                    <h2>To Do</h2>
-                    <ul class="task-list">
+                    <h2 id="heading-todo">To Do</h2>
+                    <ul class="task-list" aria-labelledby="heading-todo" role="list">
                     </ul>
                 </div>
                 <div class="colum" data-status="doing">
-                    <h2>Doing</h2>
-                    <ul class="task-list"></ul>
+                    <h2 id="heading-doing">Doing</h2>
+                    <ul class="task-list" aria-labelledby="heading-doing" role="list"></ul>
                 </div>
                 <div class="colum" data-status="done">
-                    <h2>Done</h2>
-                    <ul class="task-list"></ul>
+                    <h2 id="heading-done">Done</h2>
+                    <ul class="task-list" aria-labelledby="heading-done" role="list"></ul>
                 </div>
             </section>
-            <section class="add-task">
-                <div class="info-task">
-                    <input type="text" id="new-task" placeholder="Titulo de la nueva tarea...">
-                    <textarea id="new-desc" placeholder="Descripcion (opcional)"></textarea>
-                </div>
-                <button id="add-btn">Añadir</button>
+            <section class="add-task" aria-label='Añadir nueva tarea'>
+                <form id="task-form">
+                    <div class="info-task">
+                        <label class="visually-hidden" for="new-task">Título de la nueva tarea</label>
+                        <input type="text" id="new-task" placeholder="Introducir titulo..." required>
+                        <textarea id="new-desc" placeholder="Describe la tarea (opcional)" rows="2"></textarea>
+                    </div>
+                    <button type="submit" id="add-btn">Añadir</button>
+
+                </form>
             </section>            
         </main>
 
-        <div id="modal" class="modal hidden">
+        <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-desc">
             <div class="modal-content">
-                <button id="modal-close" class="modal-close">&times;</button>
+                <button id="modal-close" class="modal-close" aria-label="Cerrar ventana">&times;</button>
                 <h3 id="modal-title"></h3>
                 <p id="modal-desc"></p>
             </div>
