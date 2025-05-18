@@ -30,6 +30,11 @@ const createTaskSchema = z.object({
 			invalid_type_error: "Title must be a string",
 		})
 		.min(1, "Title cannot be empty"),
+	description: z
+		.string({
+			invalid_type_error: "Description must be a string",
+		})
+		.optional(),
 	state: z
 		.enum(["todo", "in-progress", "done"], {
 			invalid_type_error: "State must be one of: todo, in-progress, done",
@@ -98,6 +103,7 @@ app.post(`${PREFIX}/tasks`, async (req, res, next) => {
 
 		const {
 			title,
+			description = "",
 			state = "todo",
 			done = false,
 			important = false,
@@ -110,6 +116,7 @@ app.post(`${PREFIX}/tasks`, async (req, res, next) => {
 		const newTask = {
 			id: crypto.randomUUID(), // ID único alfanumérico
 			title: title.trim(),
+			description: description.trim(),
 			state,
 			done,
 			important,
