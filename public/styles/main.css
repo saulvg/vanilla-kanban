@@ -1,0 +1,257 @@
+:root {
+	--bg-page: #f0f2f5;
+	--bg-column: #ffffff;
+	--bg-task: #fafbfc;
+	--accent: #3b82f6;
+	--accent-light: #dbeafe;
+	--text-main: #1f2937;
+	--text-muted: #6b7280;
+	--shadow: rgba(0, 0, 0, 0.05);
+	--font: "Roboto", sans-serif;
+	--radius: 0.5rem;
+	--transition: 0.2s ease-in-out;
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html,
+body {
+	height: 100%;
+	font-family: var(--font);
+	color: var(--text-main);
+	background-color: var(--bg-page);
+}
+
+ul {
+	list-style: none;
+}
+
+header {
+	background-color: var(--bg-column);
+	padding: 1rem 2rem;
+	box-shadow: 0 2px 4px var(--shadow);
+}
+
+header h1 {
+	font-size: 1.5rem;
+	font-weight: 700;
+}
+main {
+	display: flex;
+	flex-direction: column;
+	height: calc(100% - 72px);
+}
+
+.board {
+	flex: 1;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	gap: 1rem;
+	padding: 1rem;
+	overflow-x: auto;
+}
+
+.colum {
+	background-color: var(--bg-column);
+	border-radius: var(--radius);
+	box-shadow: 0 2px 6px var(--shadow);
+	display: flex;
+	flex-direction: column;
+	max-height: 100%;
+	transition: transform var(--transition);
+}
+
+.colum:hover {
+	transform: translateY(-2px);
+}
+
+.colum h2 {
+	padding: 1rem;
+	font-size: 1.125rem;
+	font-weight: 500;
+	border-bottom: 1px solid var(--shadow);
+}
+
+.task-list {
+	flex: 1;
+	overflow-y: auto;
+	padding: .5rem 1rem;
+	display: flex;
+	flex-direction: column;
+	gap: .75rem;
+}
+
+.task {
+	background: var(--bg-task);
+	border-radius: calc(var(--radius) / 2);
+	padding: .75rem 1rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	cursor: grab;
+	box-shadow: 0 1px 3px var(--shadow);
+	position: relative;
+	max-height: 10rem;
+	overflow: hidden;
+	transition: background var(--transition), box-shadow var(--transition);
+}
+
+.task:active {
+	cursor: grabbing;
+}
+
+.task:hover {
+	background-color: var(--accent-light);
+	box-shadow: 0 4px 8px var(--shadow);
+}
+
+.task .title {
+	font-size: .95rem;
+	font-weight: 500;
+	margin-bottom: .25rem;
+}
+
+.task .snippet {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 3;
+	line-clamp: 3;
+	overflow: hidden;
+	white-space: normal;
+	overflow-wrap: anywhere;
+	overflow-wrap: break-word;
+	word-break: break-all;
+	hyphens: auto;
+	text-overflow: ellipsis;
+	font-size: 0.875rem;
+	color: var(--text-muted);
+	line-height: 1.2;
+	line-height: 1.2lh;
+}
+
+.task.important {
+	border-left: 4px solid var(--accent);
+}
+
+.task.done {
+	text-decoration: line-through;
+	opacity: 0.6;
+}
+
+.task button {
+	background-color: transparent;
+	border: none;
+	font-size: 1rem;
+	cursor: pointer;
+	color: var(--text-muted);
+	transition: color var(--transition);
+}
+
+.task button:hover {
+	color: var(--accent);
+}
+
+.task button.done:hover {
+	color: green;
+}
+
+.add-task {
+	display: flex;
+	padding: 1rem 1.5rem;
+	background: var(--bg-column);
+	box-shadow: 0 -2px 4px var(--shadow);
+	gap: 0.5rem;
+}
+
+.info-task {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+#new-task,
+#new-desc {
+	width: 100%;
+	padding: .5rem 1rem;
+	border: 1px solid var(--shadow);
+	border-radius: var(--radius);
+	font-size: 1rem;
+	transition: border-color var(--transition);
+}
+
+#new-task:focus,
+#new-desc:focus {
+	outline: none;
+	border-color: var(--accent);
+	box-shadow: 0 0 0 2px var(--accent-light);
+}
+
+#add-btn {
+	align-self: flex-end;
+	padding: .75rem 1rem;
+	background-color: var(--accent);
+	border: none;
+	border-radius: var(--radius);
+	color: white;
+	font-weight: 500;
+	font-size: 1rem;
+	cursor: pointer;
+	transition: background-color var(--transition), transform var(--transition);
+}
+
+#add-btn:hover {
+	background-color: #2563eb;
+	transform: translateY(-2px);
+}
+
+.modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.05);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 100;
+}
+
+.modal.hidden {
+	display: none;
+}
+
+.modal-content {
+	background-color: var(--bg-column);
+	border-radius: var(--radius);
+	padding: 1.5rem;
+	max-width: 500px;
+	width: 90%;
+	max-height: 80%;
+	overflow-y: auto;
+	position: relative;
+}
+
+.modal-close {
+	position: absolute;
+	top: 0.5rem;
+	right: 0.5rem;
+	background-color: transparent;
+	font-size: 1.5rem;
+	cursor: pointer;
+	border: none;
+}
+
+@media (max-width: 600px) {
+	.modal-content {
+		width: 100%;
+		height: 100%;
+		max-height: none;
+		border-radius: 0;
+	}
+}
