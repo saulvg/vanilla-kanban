@@ -1,1 +1,26 @@
-[]
+[
+  {
+    "id": "1360bc24-2a59-4c48-a154-383ac451f729",
+    "title": "todo",
+    "description": "",
+    "state": "todo",
+    "done": false,
+    "important": false
+  },
+  {
+    "id": "495163c0-f732-41ae-bec6-becdbbf652db",
+    "title": "In progres",
+    "description": "",
+    "state": "in-progress",
+    "done": false,
+    "important": false
+  },
+  {
+    "id": "e8635c81-2024-49e6-9b55-d36cd410c8a4",
+    "title": "Done",
+    "description": "",
+    "state": "done",
+    "done": false,
+    "important": false
+  }
+]

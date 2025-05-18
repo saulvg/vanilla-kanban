@@ -1,17 +1,22 @@
 {
 	"logLevel": "normal",
-
 	"include": ["api/**/*.js", "public/**/*.js", "scripts/**/*.js"],
-
 	"exclude": ["node_modules/", "dist/", "tasks.json"],
 
-	"rules": {
-		"semicolon": ["error", "always"],
-		"no-console": "warn",
-		"import/no-duplicates": "error",
-		"react/jsx-uses-react": "off",
-		"react/react-in-jsx-scope": "off",
-		"import/no-unresolved": "error"
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"semicolon": ["error", "always"],
+			"no-console": "warn",
+			"import/no-duplicates": "error",
+			"react/jsx-uses-react": "off",
+			"react/react-in-jsx-scope": "off",
+			"import/no-unresolved": "error",
+
+			"complexity/noForEach": {
+				"level": "off"
+			}
+		}
 	},
 
 	"formatter": {
