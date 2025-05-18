@@ -6,11 +6,18 @@
     "gen-env": "node scripts/generateEnv.js",
     "start:api": "npm run gen-env && cd api && npm run dev",
     "serve:front": "serve public -l 5000",
-    "start": "npm run setup && concurrently \"npm run start:api\" \"npm run serve:front\""
+    "start": "npm run setup && concurrently \"npm run start:api\" \"npm run serve:front\"",
+    "lint": "biome lint",
+    "format": "biome format",
+    "check:style": "npm run lint && npm run format -- --check"
   },
   "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
     "concurrently": "^7.0.0",
     "dotenv": "^10.0.0",
     "serve": "^14.0.0"
+  },
+  "dependencies": {
+    "zod": "^3.24.4"
   }
 }

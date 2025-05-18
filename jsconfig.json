@@ -1,0 +1,14 @@
+{
+	"compilerOptions": {
+		// Sistema de módulos que usas en Node.js
+		"module": "commonjs",
+		// Activa la comprobación estática de JS (te marca errores de tipo / imports)
+		"checkJs": false,
+		// Resuelve imports al estilo Node.js (node_modules)
+		"moduleResolution": "node",
+		// Raíz para resolver importaciones relativas y alias
+		"baseUrl": "."
+	},
+	// Qué ficheros quiere “ver” el language server
+	"include": ["api/**/*.js", "scripts/**/*.js", "public/**/*.js"]
+}

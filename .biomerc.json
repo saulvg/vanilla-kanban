@@ -1,0 +1,25 @@
+{
+	"logLevel": "normal",
+
+	"include": ["api/**/*.js", "public/**/*.js", "scripts/**/*.js"],
+
+	"exclude": ["node_modules/", "dist/", "tasks.json"],
+
+	"rules": {
+		"semicolon": ["error", "always"],
+		"no-console": "warn",
+		"import/no-duplicates": "error",
+		"react/jsx-uses-react": "off",
+		"react/react-in-jsx-scope": "off",
+		"import/no-unresolved": "error"
+	},
+
+	"formatter": {
+		"printWidth": 80,
+		"singleQuote": true,
+		"trailingComma": "es5",
+		"tabWidth": 2,
+		"useTabs": false
+	},
+	"extends": ["biome/react", "biome/typescript"]
+}
